@@ -1,68 +1,119 @@
-# InfraOS AI — AI DevOps Infrastructure Platform
+# InfraOS AI
 
-> Kubernetes monitoring, AI root-cause analysis, predictive alerts, and automated remediation — your AI-powered DevOps copilot.
+I was on-call for a service once and got paged at 2am for a Kubernetes cluster that was falling apart in three different ways simultaneously. I spent 45 minutes running `kubectl` commands to understand what was happening before I could even start fixing it. InfraOS AI is my answer to that problem.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://python.org)
+It's a DevOps operations platform that connects to your Kubernetes cluster, pulls in everything that's happening — pods, deployments, resource usage, events, Prometheus metrics — and gives you an AI layer to make sense of it all. You can ask "why is this pod crashing?" in plain English and get a real answer, not a wall of log output to parse yourself.
 
-## Features
+---
 
-- [x] Kubernetes cluster monitoring (pods, nodes, services)
-- [x] Deployment rollout tracking
-- [x] AI root-cause analysis ("why is my pod crashing?")
-- [x] Natural language K8s queries
-- [x] Prometheus metrics integration
-- [x] Grafana dashboard integration
-- [x] Predictive anomaly detection
-- [x] Automated remediation workflows
-- [x] Slack / webhook alerting
-- [x] Mock mode (works without a real cluster)
+## What it does
 
-## Architecture
+**Cluster monitoring** — Live view of your nodes, pods, deployments, and services. Health status, restart counts, resource requests vs. limits. Everything in one dashboard rather than spread across ten kubectl commands.
 
-```mermaid
-graph TD
-    A[Kubernetes Cluster] -->|Metrics| B[Prometheus]
-    B -->|Query| C[InfraOS Backend]
-    A -->|Events/Logs| C
-    C --> D[AI Analysis Engine]
-    D --> E[Root Cause Analyzer]
-    D --> F[Anomaly Detector]
-    D --> G[Remediation Engine]
-    C --> H[Grafana Dashboards]
-    C --> I[Web Dashboard]
-    G --> J[Auto-remediation Actions]
-    C --> K[Slack Alerts]
-```
+**Natural language queries** — Ask questions about your cluster in plain English. "Which pods have restarted more than 5 times in the last hour?" or "What's consuming the most memory in the production namespace?" — it translates these into the right queries and gives you the answer.
 
-## Tech Stack
+**Root cause analysis** — When something breaks, tell it what happened and it traces back through events, logs, and metrics to figure out why. It's not magic — it looks at the same signals you'd look at manually, just faster and with an AI to synthesize them.
 
-| Layer | Technology |
-|-------|-----------|
-| Backend | FastAPI, Python 3.11+ |
-| K8s Client | kubernetes-python |
-| Metrics | Prometheus + prometheus-client |
-| Visualization | Grafana (official image) |
-| AI | OpenAI GPT-4 / Anthropic Claude |
-| ML | scikit-learn (anomaly detection) |
-| Frontend | React 18, Recharts, Tailwind |
+**Anomaly detection** — Watches your metrics over time and flags things that look unusual before they become incidents. High memory growth rate, unusual request patterns, CPU spikes that don't match your normal traffic pattern.
 
-## Quick Start
+**Automated remediation** — For common problems it can take action directly: restart a crashed pod, scale a deployment up or down, cordon a misbehaving node. Every action gets logged and can trigger a Slack notification.
+
+**Prometheus and Grafana** — Built-in integration with both. Grafana runs as part of the Docker Compose stack. Prometheus scrapes whatever you point it at.
+
+**Mock mode** — No Kubernetes cluster? No problem. Set `K8S_MOCK_MODE=true` and the platform generates realistic fake cluster data. Useful for exploring the UI, testing your alerting rules, or demoing to someone.
+
+---
+
+## How to run it
+
+**Prerequisites**: Docker and Docker Compose. An OpenAI API key for the AI features.
+
+**1. Clone the repo**
 
 ```bash
-git clone https://github.com/yourusername/infra-os
+git clone https://github.com/isidhartha/infra-os.git
 cd infra-os
+```
+
+**2. Configure**
+
+```bash
 cp .env.example .env
-# Set K8S_MOCK_MODE=true if you don't have a cluster
+```
+
+Edit `.env`. The important ones:
+
+```
+OPENAI_API_KEY=sk-your-key-here
+K8S_MOCK_MODE=true          # set to false if you have a real cluster
+```
+
+If you have a real cluster, you'll also need to set `K8S_CONFIG_PATH` to your kubeconfig file path.
+
+**3. Start everything**
+
+```bash
 docker-compose up --build
 ```
 
-Open `http://localhost:3000` for the dashboard, `http://localhost:3001` for Grafana, `http://localhost:9090` for Prometheus.
+This starts the backend, Prometheus, Grafana, and the frontend. First build takes a few minutes.
 
-## Mock Mode
+**4. Open the dashboards**
 
-Set `K8S_MOCK_MODE=true` in `.env` to run with realistic fake cluster data — no Kubernetes cluster required.
+| Service | URL |
+|---|---|
+| InfraOS Dashboard | http://localhost:3000 |
+| Grafana | http://localhost:3001 |
+| Prometheus | http://localhost:9090 |
+| API | http://localhost:8000 |
+
+---
+
+## Connecting a real cluster
+
+Set `K8S_MOCK_MODE=false` in `.env` and mount your kubeconfig:
+
+```yaml
+# In docker-compose.yml, under the backend service:
+volumes:
+  - ~/.kube:/root/.kube:ro
+```
+
+The backend uses the standard kubeconfig format. Whatever `kubectl` can reach, InfraOS can reach.
+
+---
+
+## API
+
+Swagger UI at `http://localhost:8000/docs`.
+
+```
+GET  /api/v1/k8s/cluster         — Cluster overview
+GET  /api/v1/k8s/pods            — List pods (filter by namespace)
+GET  /api/v1/k8s/deployments     — List deployments
+POST /api/v1/k8s/nl-query        — Natural language query
+POST /api/v1/incident/analyze    — Root cause analysis
+POST /api/v1/remediate           — Execute a remediation action
+GET  /api/v1/alerts              — Active alerts
+GET  /api/v1/metrics/snapshot    — Current metrics snapshot
+WS   /ws/metrics                 — Real-time metrics stream
+```
+
+---
+
+## Configuration
+
+| Variable | Description | Default |
+|---|---|---|
+| `OPENAI_API_KEY` | For AI analysis and NL queries | — |
+| `K8S_MOCK_MODE` | Run with fake cluster data | `true` |
+| `PROMETHEUS_URL` | Prometheus endpoint | `http://prometheus:9090` |
+| `GRAFANA_URL` | Grafana endpoint | `http://grafana:3000` |
+| `SLACK_WEBHOOK_URL` | Slack notifications for remediations | — |
+| `POD_RESTART_WARNING_THRESHOLD` | Alert when a pod restarts this many times | `5` |
+
+---
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT. Run it on your own infrastructure, fork it, build on top of it.
