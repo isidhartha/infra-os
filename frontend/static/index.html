@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InfraOS — AI DevOps Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="infra-bg font-sans text-slate-200 h-screen flex overflow-hidden">
+
+  <!-- Mobile overlay -->
+  <div id="mobileOverlay" class="fixed inset-0 bg-black/70 z-40 hidden" onclick="toggleSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="infra-sidebar w-60 flex flex-col z-50 transition-transform">
+    <div class="p-4 border-b border-white/5">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center">
+          <i class="fas fa-server text-white text-xs"></i>
+        </div>
+        <div>
+          <div class="font-bold text-white font-mono text-sm">InfraOS</div>
+          <div class="text-xs text-slate-500">DevOps Platform</div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="flex-1 p-2 space-y-0.5">
+      <button onclick="showPage('overview')" id="nav-overview" class="infra-nav active w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm">
+        <i class="fas fa-gauge w-4 text-center text-indigo-400"></i> Overview
+      </button>
+      <button onclick="showPage('pods')" id="nav-pods" class="infra-nav w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm">
+        <i class="fas fa-cube w-4 text-center text-cyan-400"></i> Pods
+        <span id="podsCount" class="ml-auto text-xs bg-cyan-500/10 text-cyan-400 px-1.5 py-0.5 rounded">0</span>
+      </button>
+      <button onclick="showPage('deployments')" id="nav-deployments" class="infra-nav w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm">
+        <i class="fas fa-boxes-stacked w-4 text-center text-purple-400"></i> Deployments
+      </button>
+      <button onclick="showPage('metrics')" id="nav-metrics" class="infra-nav w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm">
+        <i class="fas fa-chart-line w-4 text-center text-green-400"></i> Metrics
+        <span class="ml-auto w-2 h-2 rounded-full bg-green-400 live-pulse"></span>
+      </button>
+      <button onclick="showPage('alerts')" id="nav-alerts" class="infra-nav w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm">
+        <i class="fas fa-bell w-4 text-center text-red-400"></i> Alerts
+        <span id="alertCount" class="ml-auto text-xs bg-red-500/20 text-red-400 px-1.5 py-0.5 rounded hidden">0</span>
+      </button>
+      <button onclick="showPage('analysis')" id="nav-analysis" class="infra-nav w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm">
+        <i class="fas fa-brain w-4 text-center text-yellow-400"></i> AI Analysis
+      </button>
+      <button onclick="showPage('events')" id="nav-events" class="infra-nav w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm">
+        <i class="fas fa-list-ul w-4 text-center text-slate-400"></i> Events
+      </button>
+    </nav>
+
+    <div class="p-3 border-t border-white/5">
+      <div class="flex items-center gap-2">
+        <div id="wsIndicator" class="w-2 h-2 rounded-full bg-slate-600"></div>
+        <span class="text-xs text-slate-500 font-mono" id="wsLabel">metrics stream</span>
+        <button onclick="refreshAll()" class="ml-auto text-slate-500 hover:text-white text-xs"><i class="fas fa-rotate-right"></i></button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="flex-1 flex flex-col overflow-hidden">
+    <header class="flex items-center justify-between px-5 py-3 border-b border-white/5">
+      <div class="flex items-center gap-3">
+        <button onclick="toggleSidebar()" class="md:hidden text-slate-400 hover:text-white">
+          <i class="fas fa-bars"></i>
+        </button>
+        <span id="pageTitle" class="text-sm font-semibold text-slate-300">Overview</span>
+      </div>
+      <div class="flex items-center gap-3 text-xs text-slate-500 font-mono">
+        <span id="lastUpdate">—</span>
+        <button onclick="refreshAll()" class="hover:text-white transition"><i class="fas fa-rotate-right"></i></button>
+      </div>
+    </header>
+
+    <div class="flex-1 overflow-y-auto">
+
+      <!-- OVERVIEW -->
+      <div id="page-overview" class="page active p-5">
+
+        <!-- HERO BANNER -->
+        <div id="heroBanner" class="infra-card rounded-xl px-5 py-4 mb-5" style="background:linear-gradient(90deg,rgba(99,102,241,0.06),rgba(34,211,238,0.06));border-color:rgba(99,102,241,0.2)">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="text-sm font-bold text-white">InfraOS</span>
+                <span class="text-xs px-2 py-0.5 rounded" style="background:rgba(99,102,241,0.12);color:#6366f1">AI DevOps Platform</span>
+              </div>
+              <p class="text-xs leading-relaxed" style="color:#94a3b8;max-width:64rem">A unified Kubernetes observability and remediation platform. Monitor cluster health, pod and deployment status, real-time CPU/memory metrics, and active alerts — all in one dashboard. Ask questions in plain English, trigger AI-powered root-cause analysis, and get automated remediation suggestions for your infrastructure.</p>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                <span class="text-xs px-2 py-0.5 rounded-full" style="background:rgba(99,102,241,0.08);color:#6366f1">☸️ Kubernetes Monitoring</span>
+                <span class="text-xs px-2 py-0.5 rounded-full" style="background:rgba(34,211,238,0.08);color:#22d3ee">📊 Real-time Metrics via WebSocket</span>
+                <span class="text-xs px-2 py-0.5 rounded-full" style="background:rgba(255,255,255,0.04);color:#64748b">🤖 AI Analysis · NL Queries · Alerts</span>
+              </div>
+            </div>
+            <button onclick="document.getElementById('heroBanner').style.display='none'" class="flex-shrink-0 text-lg leading-none text-slate-600 hover:text-slate-400 mt-0.5" title="Dismiss">×</button>
+          </div>
+        </div>
+        <!-- Alert strip -->
+        <div id="alertStrip" class="hidden mb-4 bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3 flex items-center gap-3">
+          <i class="fas fa-triangle-exclamation text-red-400"></i>
+          <span id="alertStripText" class="text-sm text-red-300"></span>
+        </div>
+
+        <!-- Stat cards -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+          <div class="infra-card rounded-xl p-4">
+            <div class="flex items-center gap-2 mb-2">
+              <i class="fas fa-server text-indigo-400 text-xs"></i>
+              <span class="text-xs text-slate-500 font-mono">NODES</span>
+            </div>
+            <div class="text-3xl font-bold text-white counter" id="stat-nodes">—</div>
+          </div>
+          <div class="infra-card rounded-xl p-4">
+            <div class="flex items-center gap-2 mb-2">
+              <i class="fas fa-cube text-cyan-400 text-xs"></i>
+              <span class="text-xs text-slate-500 font-mono">PODS</span>
+            </div>
+            <div class="text-3xl font-bold text-white counter" id="stat-pods">—</div>
+          </div>
+          <div class="infra-card rounded-xl p-4">
+            <div class="flex items-center gap-2 mb-2">
+              <i class="fas fa-boxes-stacked text-purple-400 text-xs"></i>
+              <span class="text-xs text-slate-500 font-mono">DEPLOYS</span>
+            </div>
+            <div class="text-3xl font-bold text-white counter" id="stat-deploys">—</div>
+          </div>
+          <div class="infra-card rounded-xl p-4">
+            <div class="flex items-center gap-2 mb-2">
+              <i class="fas fa-bell text-red-400 text-xs"></i>
+              <span class="text-xs text-slate-500 font-mono">ALERTS</span>
+            </div>
+            <div class="text-3xl font-bold text-red-400 counter" id="stat-alerts">—</div>
+          </div>
+        </div>
+
+        <!-- Node cards -->
+        <div class="mb-6">
+          <h3 class="text-xs text-slate-500 font-mono mb-3">NODE STATUS</h3>
+          <div id="nodeGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div class="infra-card rounded-xl p-3 animate-pulse h-20"></div>
+            <div class="infra-card rounded-xl p-3 animate-pulse h-20"></div>
+          </div>
+        </div>
+
+        <!-- Health score -->
+        <div class="infra-card rounded-xl p-5 flex items-center gap-6">
+          <div class="relative w-20 h-20">
+            <svg width="80" height="80" viewBox="0 0 80 80">
+              <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="8"/>
+              <circle id="healthRing" cx="40" cy="40" r="34" fill="none" stroke="#10b981" stroke-width="8"
+                stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="53.4"
+                transform="rotate(-90 40 40)" style="transition:all 1s"/>
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center font-bold text-white text-sm" id="healthScore">—</div>
+          </div>
+          <div>
+            <div class="text-sm font-semibold text-white mb-1">Cluster Health</div>
+            <div class="text-xs text-slate-400" id="healthDesc">Loading cluster status…</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PODS -->
+      <div id="page-pods" class="page p-5">
+        <div class="flex items-center gap-3 mb-4">
+          <select id="nsFilter" onchange="loadPods()" class="infra-input rounded-lg px-3 py-2 text-sm">
+            <option value="">All Namespaces</option>
+            <option value="default">default</option>
+            <option value="kube-system">kube-system</option>
+            <option value="monitoring">monitoring</option>
+          </select>
+          <input id="podSearch" type="text" placeholder="Search pods…" oninput="filterPods()"
+            class="infra-input flex-1 rounded-lg px-3 py-2 text-sm" />
+          <button onclick="loadPods()" class="infra-btn-sm px-3 py-2 rounded-lg text-sm"><i class="fas fa-rotate-right"></i></button>
+        </div>
+        <div class="infra-card rounded-xl overflow-hidden">
+          <table class="w-full text-sm">
+            <thead><tr class="border-b border-white/5 text-xs text-slate-500 font-mono">
+              <th class="px-4 py-3 text-left">POD NAME</th>
+              <th class="px-4 py-3 text-left hidden md:table-cell">NAMESPACE</th>
+              <th class="px-4 py-3 text-left">STATUS</th>
+              <th class="px-4 py-3 text-left hidden sm:table-cell">RESTARTS</th>
+              <th class="px-4 py-3 text-left hidden lg:table-cell">AGE</th>
+            </tr></thead>
+            <tbody id="podsTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- DEPLOYMENTS -->
+      <div id="page-deployments" class="page p-5">
+        <div class="flex items-center gap-3 mb-4">
+          <input id="depSearch" type="text" placeholder="Search deployments…" oninput="filterDeployments()"
+            class="infra-input flex-1 rounded-lg px-3 py-2 text-sm" />
+          <button onclick="loadDeployments()" class="infra-btn-sm px-3 py-2 rounded-lg text-sm"><i class="fas fa-rotate-right"></i></button>
+        </div>
+        <div class="infra-card rounded-xl overflow-hidden">
+          <table class="w-full text-sm">
+            <thead><tr class="border-b border-white/5 text-xs text-slate-500 font-mono">
+              <th class="px-4 py-3 text-left">DEPLOYMENT</th>
+              <th class="px-4 py-3 text-left hidden md:table-cell">NAMESPACE</th>
+              <th class="px-4 py-3 text-left">READY</th>
+              <th class="px-4 py-3 text-left hidden sm:table-cell">AVAILABLE</th>
+            </tr></thead>
+            <tbody id="deploymentsTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- METRICS -->
+      <div id="page-metrics" class="page p-5">
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div class="infra-card rounded-xl p-4">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs text-slate-500 font-mono">CPU USAGE %</span>
+              <span id="cpuCurrent" class="text-xs font-mono text-indigo-400">—</span>
+            </div>
+            <canvas id="cpuChart" height="120"></canvas>
+          </div>
+          <div class="infra-card rounded-xl p-4">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs text-slate-500 font-mono">MEMORY USAGE %</span>
+              <span id="memCurrent" class="text-xs font-mono text-cyan-400">—</span>
+            </div>
+            <canvas id="memChart" height="120"></canvas>
+          </div>
+        </div>
+        <div class="infra-card rounded-xl p-4">
+          <div class="text-xs text-slate-500 font-mono mb-3">NAMESPACE RESOURCE USAGE</div>
+          <canvas id="nsChart" height="100"></canvas>
+        </div>
+      </div>
+
+      <!-- ALERTS -->
+      <div id="page-alerts" class="page p-5">
+        <div id="alertsList" class="space-y-3">
+          <div class="text-xs text-slate-600 italic font-mono">Loading alerts…</div>
+        </div>
+      </div>
+
+      <!-- AI ANALYSIS -->
+      <div id="page-analysis" class="page p-5">
+        <div class="infra-card rounded-xl p-5 mb-4">
+          <div class="flex flex-col sm:flex-row gap-4">
+            <div class="flex-1">
+              <label class="block text-xs text-slate-500 font-mono mb-1">NATURAL LANGUAGE QUERY</label>
+              <input id="nlQuery" type="text" placeholder="e.g. Show me pods with high restart counts…"
+                class="infra-input w-full rounded-lg px-4 py-2.5 text-sm" onkeydown="if(event.key==='Enter')nlQuery_()" />
+            </div>
+            <div class="flex gap-2 items-end">
+              <button onclick="nlQuery_()" class="infra-btn px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2">
+                <i class="fas fa-search"></i> Query
+              </button>
+              <button onclick="analyzeCluster()" class="infra-btn px-4 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2">
+                <i class="fas fa-brain"></i> Full Analysis
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="analysisResult" class="infra-card rounded-xl p-5 hidden">
+          <div class="text-xs text-slate-500 font-mono mb-3">AI ANALYSIS</div>
+          <div id="analysisText" class="text-sm text-slate-300 space-y-2 leading-relaxed"></div>
+        </div>
+      </div>
+
+      <!-- EVENTS -->
+      <div id="page-events" class="page p-5">
+        <div class="infra-card rounded-xl p-4">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs text-slate-500 font-mono">CLUSTER EVENTS (newest first)</span>
+            <button onclick="loadEvents()" class="text-xs text-slate-500 hover:text-white"><i class="fas fa-rotate-right"></i></button>
+          </div>
+          <div id="eventsList" class="space-y-1.5 max-h-[60vh] overflow-y-auto font-mono text-xs"></div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="toastContainer" class="fixed bottom-5 right-5 z-50 space-y-2"></div>
+  <script src="app.js"></script>
+</body>
+</html>
