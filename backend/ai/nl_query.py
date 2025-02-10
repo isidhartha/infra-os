@@ -5,6 +5,7 @@ from __future__ import annotations
 import re
 from typing import Any
 
+from llm_service import complete as llm_complete
 from shared.config import get_settings
 from shared.logging import get_logger
 from shared.models import NLQueryRequest, NLQueryResponse
@@ -113,11 +114,11 @@ def _match_pattern(query: str) -> dict[str, Any] | None:
 
 
 async def _ai_nl_query(query: str, namespace: str) -> NLQueryResponse:
-    if settings.openai_api_key:
+    if settings.openai_api_key or __import__("os").getenv("LLM_PROVIDER", "openai").lower() == "ollama":
         try:
-            return await _openai_nl_query(query, namespace)
+            return await _llm_nl_query(query, namespace)
         except Exception as exc:
-            logger.warning("OpenAI NL query failed: %s", exc)
+            logger.warning("LLM NL query failed: %s", exc)
     match = _match_pattern(query)
     if match:
         return NLQueryResponse(
@@ -132,26 +133,25 @@ async def _ai_nl_query(query: str, namespace: str) -> NLQueryResponse:
     return resp
 
 
-async def _openai_nl_query(query: str, namespace: str) -> NLQueryResponse:
-    import openai  # type: ignore[import]
-    aclient = openai.AsyncOpenAI(api_key=settings.openai_api_key)
+async def _llm_nl_query(query: str, namespace: str) -> NLQueryResponse:
+    import asyncio
+    import json
     prompt = (
         f"You are a Kubernetes expert. Convert this question to a kubectl command and explain it.\n"
         f"Question: {query}\nNamespace context: {namespace}\n\n"
         "Respond with JSON: {\"kubectl\": \"...\", \"explanation\": \"...\", \"suggestions\": [\"...\"]}"
     )
-    response = await aclient.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "user", "content": prompt}],
-        max_tokens=300,
-        response_format={"type": "json_object"},
+    text = await asyncio.get_event_loop().run_in_executor(
+        None, lambda: llm_complete(prompt)
     )
-    import json
-    data = json.loads(response.choices[0].message.content or "{}")
+    try:
+        data = json.loads(text or "{}")
+    except json.JSONDecodeError:
+        data = {}
     return NLQueryResponse(
         query=query,
         kubectl_command=data.get("kubectl", "kubectl get all"),
-        explanation=data.get("explanation", ""),
+        explanation=data.get("explanation", text[:300] if text else ""),
         result="[Run command against your cluster to see results]",
         suggestions=data.get("suggestions", []),
     )

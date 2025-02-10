@@ -6,6 +6,7 @@ import uuid
 from datetime import datetime
 from typing import Any
 
+from llm_service import complete as llm_complete
 from shared.config import get_settings
 from shared.logging import get_logger
 from shared.models import IncidentAnalysisRequest, RootCauseAnalysis
@@ -113,12 +114,14 @@ def _heuristic_analysis(description: str, resources: list[str]) -> RootCauseAnal
 
 
 async def _ai_analysis(req: IncidentAnalysisRequest) -> RootCauseAnalysis:
-    """Attempt AI analysis via OpenAI/Anthropic, fall back to heuristics."""
-    if settings.openai_api_key:
+    """Attempt AI analysis via llm_service (OpenAI or Ollama), fall back to Anthropic, then heuristics."""
+    import os
+    use_llm = settings.openai_api_key or os.getenv("LLM_PROVIDER", "openai").lower() == "ollama"
+    if use_llm:
         try:
-            return await _openai_analysis(req)
+            return await _llm_analysis(req)
         except Exception as exc:
-            logger.warning("OpenAI analysis failed: %s", exc)
+            logger.warning("LLM analysis failed: %s", exc)
     if settings.anthropic_api_key:
         try:
             return await _anthropic_analysis(req)
@@ -133,9 +136,8 @@ async def _ai_analysis(req: IncidentAnalysisRequest) -> RootCauseAnalysis:
     return result
 
 
-async def _openai_analysis(req: IncidentAnalysisRequest) -> RootCauseAnalysis:
-    import openai  # type: ignore[import]
-    aclient = openai.AsyncOpenAI(api_key=settings.openai_api_key)
+async def _llm_analysis(req: IncidentAnalysisRequest) -> RootCauseAnalysis:
+    import asyncio
     prompt = (
         f"You are a Kubernetes SRE expert. Analyze this incident:\n"
         f"Description: {req.description}\n"
@@ -145,12 +147,9 @@ async def _openai_analysis(req: IncidentAnalysisRequest) -> RootCauseAnalysis:
         "3) Recommended actions (list), 4) Confidence score 0-1. "
         "Be concise and actionable."
     )
-    response = await aclient.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "user", "content": prompt}],
-        max_tokens=600,
+    text = await asyncio.get_event_loop().run_in_executor(
+        None, lambda: llm_complete(prompt)
     )
-    text = response.choices[0].message.content or ""
     return RootCauseAnalysis(
         incident_id=req.incident_id or str(uuid.uuid4())[:8],
         root_cause=text[:300],
