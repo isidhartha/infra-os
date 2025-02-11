@@ -1,5 +1,7 @@
 # InfraOS AI
 
+[![Discussions](https://img.shields.io/github/discussions/isidhartha/infra-os)](https://github.com/isidhartha/infra-os/discussions)
+
 I was on-call for a service once and got paged at 2am for a Kubernetes cluster that was falling apart in three different ways simultaneously. I spent 45 minutes running `kubectl` commands to understand what was happening before I could even start fixing it. InfraOS AI is my answer to that problem.
 
 It's a DevOps operations platform that connects to your Kubernetes cluster, pulls in everything that's happening — pods, deployments, resource usage, events, Prometheus metrics — and gives you an AI layer to make sense of it all. You can ask "why is this pod crashing?" in plain English and get a real answer, not a wall of log output to parse yourself.
@@ -75,6 +77,8 @@ Set `K8S_MOCK_MODE=false` in `.env` and mount your kubeconfig:
 
 ```yaml
 # In docker-compose.yml, under the backend service:
+
+[![Discussions](https://img.shields.io/github/discussions/isidhartha/infra-os)](https://github.com/isidhartha/infra-os/discussions)
 volumes:
   - ~/.kube:/root/.kube:ro
 ```
