@@ -1,0 +1,13 @@
+{
+  "name": "@isidhartha/infra-client",
+  "version": "1.0.0",
+  "description": "Node.js client for InfraOS AI — query your Kubernetes cluster, run root cause analysis, and trigger remediations programmatically",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "repository": {"type": "git", "url": "https://github.com/isidhartha/infra-os.git"},
+  "homepage": "https://github.com/isidhartha/infra-os#readme",
+  "keywords": ["kubernetes", "devops", "monitoring", "k8s", "infra", "ai"],
+  "author": "Sidhartha <ramsiddhartha71154@gmail.com>",
+  "license": "MIT",
+  "publishConfig": {"registry": "https://npm.pkg.github.com", "access": "public"}
+}
