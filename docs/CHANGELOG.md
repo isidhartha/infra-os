@@ -6,3 +6,4 @@ Running log of changes. Most recent at the bottom.
 [2026-02-19] root cause analysis prompt
 [2026-02-20] fixed broken link in readme
 [2026-02-20] refactor: cleaner variable names
+[2026-02-20] formatting cleanup
