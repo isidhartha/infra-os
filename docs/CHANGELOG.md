@@ -9,3 +9,4 @@ Running log of changes. Most recent at the bottom.
 [2026-02-20] formatting cleanup
 [2026-02-20] better concurrency
 [2026-02-20] reduced unnecessary work
+[2026-02-20] self review fixes
