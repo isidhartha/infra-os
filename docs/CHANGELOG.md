@@ -16,3 +16,4 @@ Running log of changes. Most recent at the bottom.
 [2026-02-20] better memory usage
 [2026-02-20] got it working
 [2026-02-22] tests passing now
+[2026-02-22] docker build fix
