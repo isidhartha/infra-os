@@ -20,3 +20,4 @@ Running log of changes. Most recent at the bottom.
 [2026-02-22] filter improvement
 [2026-02-22] added some tests
 [2026-02-22] fix: off by one
+[2026-02-22] whitespace fix
