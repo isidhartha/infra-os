@@ -22,3 +22,4 @@ Running log of changes. Most recent at the bottom.
 [2026-02-22] fix: off by one
 [2026-02-22] whitespace fix
 [2026-02-23] guard clause cleanup
+[2026-02-23] docs: add missing param docs
