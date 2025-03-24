@@ -26,3 +26,4 @@ Running log of changes. Most recent at the bottom.
 [2026-02-23] fixed the broken test
 [2026-02-23] style: formatting
 [2026-02-23] graceful shutdown
+[2026-02-23] reverted bad change
