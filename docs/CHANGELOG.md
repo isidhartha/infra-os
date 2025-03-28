@@ -29,3 +29,4 @@ Running log of changes. Most recent at the bottom.
 [2026-02-23] reverted bad change
 [2026-02-24] trying a different approach
 [2026-02-24] it works now
+[2026-02-24] fix: race condition in handler
