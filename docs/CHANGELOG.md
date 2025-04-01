@@ -32,3 +32,4 @@ Running log of changes. Most recent at the bottom.
 [2026-02-24] fix: race condition in handler
 [2026-02-24] squash commits
 [2026-02-24] grafana dashboard integration
+[2026-02-24] updated env example file
