@@ -35,3 +35,4 @@ Running log of changes. Most recent at the bottom.
 [2026-02-24] updated env example file
 [2026-02-24] cluster event timeline
 [2026-02-25] progress
+[2026-02-25] fix: edge case with empty input
