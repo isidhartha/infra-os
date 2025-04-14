@@ -38,3 +38,4 @@ Running log of changes. Most recent at the bottom.
 [2026-02-25] fix: edge case with empty input
 [2026-02-25] pod restart alert threshold
 [2026-02-25] null safety improvement
+[2026-02-25] fix: null check was missing
