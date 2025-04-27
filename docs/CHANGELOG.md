@@ -47,3 +47,4 @@ Running log of changes. Most recent at the bottom.
 [2026-02-26] dependency cleanup
 [2026-02-27] query optimization
 [2026-02-27] minor cleanup
+[2026-02-28] bump version
