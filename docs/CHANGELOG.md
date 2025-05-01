@@ -49,3 +49,4 @@ Running log of changes. Most recent at the bottom.
 [2026-02-27] minor cleanup
 [2026-02-28] bump version
 [2026-02-28] test fixtures update
+[2026-02-28] fixed pagination edge case
