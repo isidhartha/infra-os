@@ -54,3 +54,4 @@ Running log of changes. Most recent at the bottom.
 [2026-02-28] fixed failing test
 [2026-03-01] tweaks
 [2026-03-01] added code examples to docs
+[2026-03-01] refactor: split into smaller functions
