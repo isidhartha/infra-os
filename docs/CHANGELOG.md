@@ -56,3 +56,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-01] added code examples to docs
 [2026-03-01] refactor: split into smaller functions
 [2026-03-01] signal handling
+[2026-03-01] improve readability
