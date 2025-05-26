@@ -64,3 +64,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-03] more test coverage
 [2026-03-03] fix: environment variable parsing
 [2026-03-03] chore: cleanup old scripts
+[2026-03-03] docs: installation steps update
