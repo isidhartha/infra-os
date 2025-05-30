@@ -67,3 +67,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-03] docs: installation steps update
 [2026-03-03] hotfix: bad default config
 [2026-03-03] pod log streaming
+[2026-03-03] fix: connection not closing properly
