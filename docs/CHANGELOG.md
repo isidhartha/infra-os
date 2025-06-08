@@ -72,3 +72,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-03] style: quote consistency
 [2026-03-04] consistent naming
 [2026-03-04] improved test reliability
+[2026-03-04] nl query parsing improvement
