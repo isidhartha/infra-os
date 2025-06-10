@@ -74,3 +74,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-04] improved test reliability
 [2026-03-04] nl query parsing improvement
 [2026-03-04] fixed response format issue
+[2026-03-04] improved test assertions
