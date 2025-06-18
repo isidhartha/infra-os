@@ -80,3 +80,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-06] removed dead code
 [2026-03-06] reorganized files
 [2026-03-06] finishing up
+[2026-03-06] alert deduplication
