@@ -83,3 +83,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-06] alert deduplication
 [2026-03-10] removed old commented code
 [2026-03-10] metrics websocket reconnect
+[2026-03-10] minor refactor
