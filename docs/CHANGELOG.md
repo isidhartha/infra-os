@@ -86,3 +86,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-10] minor refactor
 [2026-03-10] test: better assertions
 [2026-03-10] timeout tuning
+[2026-03-10] fixed edge case in prod
