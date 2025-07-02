@@ -91,3 +91,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-11] node resource calculation
 [2026-03-11] fix: log level override not working
 [2026-03-12] finally fixed that edge case
+[2026-03-12] address review feedback
