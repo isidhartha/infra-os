@@ -95,3 +95,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-12] resource limits
 [2026-03-12] cleaned up config
 [2026-03-12] better getting started guide
+[2026-03-12] post merge cleanup
