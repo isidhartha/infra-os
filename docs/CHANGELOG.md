@@ -94,3 +94,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-12] address review feedback
 [2026-03-12] resource limits
 [2026-03-12] cleaned up config
+[2026-03-12] better getting started guide
