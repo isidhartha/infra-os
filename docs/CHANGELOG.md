@@ -97,3 +97,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-12] better getting started guide
 [2026-03-12] post merge cleanup
 [2026-03-12] deployment status polling
+[2026-03-12] fix: timeout too short
