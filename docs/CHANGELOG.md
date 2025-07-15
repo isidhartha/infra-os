@@ -99,3 +99,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-12] deployment status polling
 [2026-03-12] fix: timeout too short
 [2026-03-12] rbac display fix
+[2026-03-12] removed unused variables
