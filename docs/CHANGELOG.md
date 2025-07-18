@@ -101,3 +101,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-12] rbac display fix
 [2026-03-12] removed unused variables
 [2026-03-12] horizontal pod autoscaler display
+[2026-03-13] expanded architecture notes
