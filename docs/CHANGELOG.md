@@ -104,3 +104,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-13] expanded architecture notes
 [2026-03-13] added troubleshooting section
 [2026-03-13] clearer contributing guide
+[2026-03-13] updated changelog
