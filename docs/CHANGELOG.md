@@ -106,3 +106,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-13] clearer contributing guide
 [2026-03-13] updated changelog
 [2026-03-13] added missing docs
+[2026-03-13] persistent volume status
