@@ -109,3 +109,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-13] persistent volume status
 [2026-03-14] resource limit visualization
 [2026-03-14] chore: standardize naming
+[2026-03-14] test: add basic unit tests
