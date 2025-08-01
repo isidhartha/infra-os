@@ -113,3 +113,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-15] db index added
 [2026-03-15] health check endpoint
 [2026-03-15] perf: lazy initialization
+[2026-03-17] cleaned up after merge
