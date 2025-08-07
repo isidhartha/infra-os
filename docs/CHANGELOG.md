@@ -116,3 +116,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-17] cleaned up after merge
 [2026-03-17] small improvement
 [2026-03-17] fix: wrong variable used
+[2026-03-18] refactor: consolidate error handling
