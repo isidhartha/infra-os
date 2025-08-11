@@ -118,3 +118,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-17] fix: wrong variable used
 [2026-03-18] refactor: consolidate error handling
 [2026-03-18] chore: gitignore update
+[2026-03-18] docs: better examples
