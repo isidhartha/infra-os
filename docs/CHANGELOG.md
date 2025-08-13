@@ -120,3 +120,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-18] chore: gitignore update
 [2026-03-18] docs: better examples
 [2026-03-18] anomaly detection tuning
+[2026-03-18] merge fixes
