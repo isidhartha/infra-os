@@ -122,3 +122,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-18] anomaly detection tuning
 [2026-03-18] merge fixes
 [2026-03-18] alternative approach
+[2026-03-19] polish
