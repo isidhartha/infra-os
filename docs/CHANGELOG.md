@@ -123,3 +123,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-18] merge fixes
 [2026-03-18] alternative approach
 [2026-03-19] polish
+[2026-03-19] auth token refresh
