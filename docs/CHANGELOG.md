@@ -126,3 +126,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-19] auth token refresh
 [2026-03-19] first pass
 [2026-03-20] fixed missing null checks
+[2026-03-20] refactor: extract constants
