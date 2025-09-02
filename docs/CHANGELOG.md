@@ -133,3 +133,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-20] connection pool sizing
 [2026-03-20] this should do it
 [2026-03-21] quick improvement
+[2026-03-21] faster startup
