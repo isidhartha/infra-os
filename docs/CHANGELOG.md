@@ -135,3 +135,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-21] quick improvement
 [2026-03-21] faster startup
 [2026-03-21] cleaned up error handling
+[2026-03-21] cors fix
