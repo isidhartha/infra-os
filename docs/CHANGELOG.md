@@ -144,3 +144,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-24] startup time improvement
 [2026-03-24] cleanup
 [2026-03-25] fixed config override bug
+[2026-03-25] renamed for clarity
