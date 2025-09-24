@@ -146,3 +146,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-25] fixed config override bug
 [2026-03-25] renamed for clarity
 [2026-03-25] session handling
+[2026-03-25] sensible defaults
