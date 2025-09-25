@@ -148,3 +148,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-25] session handling
 [2026-03-25] sensible defaults
 [2026-03-25] moved to config
+[2026-03-25] almost there
