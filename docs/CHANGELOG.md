@@ -150,3 +150,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-25] moved to config
 [2026-03-25] almost there
 [2026-03-26] output sanitization
+[2026-03-26] documentation cleanup
