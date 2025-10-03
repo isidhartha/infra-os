@@ -154,3 +154,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-26] hotfix: null dereference
 [2026-03-26] named the constants
 [2026-03-27] mocked external dependencies
+[2026-03-27] fix: config values not loading
