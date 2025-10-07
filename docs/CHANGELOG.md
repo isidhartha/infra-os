@@ -157,3 +157,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-27] fix: config values not loading
 [2026-03-27] fixed that null crash
 [2026-03-27] test: more edge cases
+[2026-03-27] updated setup docs
