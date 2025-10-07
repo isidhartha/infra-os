@@ -158,3 +158,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-27] fixed that null crash
 [2026-03-27] test: more edge cases
 [2026-03-27] updated setup docs
+[2026-03-27] quick fix for prod issue
