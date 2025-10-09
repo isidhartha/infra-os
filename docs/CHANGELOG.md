@@ -160,3 +160,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-27] updated setup docs
 [2026-03-27] quick fix for prod issue
 [2026-03-27] added edge case tests
+[2026-03-29] chore: update license year
