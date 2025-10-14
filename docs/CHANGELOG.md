@@ -162,3 +162,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-27] added edge case tests
 [2026-03-29] chore: update license year
 [2026-03-29] linting fixes
+[2026-03-29] mock data realism
