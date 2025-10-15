@@ -164,3 +164,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-29] linting fixes
 [2026-03-29] mock data realism
 [2026-03-29] general cleanup
+[2026-03-30] k8s event pagination
