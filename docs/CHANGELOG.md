@@ -166,3 +166,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-29] general cleanup
 [2026-03-30] k8s event pagination
 [2026-03-30] packages updated
+[2026-03-31] chore: remove dead code
