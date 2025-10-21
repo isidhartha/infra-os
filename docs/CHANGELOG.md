@@ -168,3 +168,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-30] packages updated
 [2026-03-31] chore: remove dead code
 [2026-03-31] input bounds check
+[2026-04-02] perf: cache the result
