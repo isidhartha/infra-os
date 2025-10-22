@@ -170,3 +170,4 @@ Running log of changes. Most recent at the bottom.
 [2026-03-31] input bounds check
 [2026-04-02] perf: cache the result
 [2026-04-02] slack notification formatting
+[2026-04-02] chore: remove unused imports
