@@ -172,3 +172,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-02] slack notification formatting
 [2026-04-02] chore: remove unused imports
 [2026-04-02] updated readme
+[2026-04-03] consolidate duplicate logic
