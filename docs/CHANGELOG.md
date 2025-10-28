@@ -174,3 +174,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-02] updated readme
 [2026-04-03] consolidate duplicate logic
 [2026-04-03] fixed typo in comment
+[2026-04-03] chore: remove debug logs
