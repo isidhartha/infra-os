@@ -178,3 +178,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-03] fix: lint errors
 [2026-04-03] docs: api reference update
 [2026-04-03] refactor: simplify logic
+[2026-04-04] back to simpler approach
