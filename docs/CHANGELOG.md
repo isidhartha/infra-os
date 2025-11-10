@@ -184,3 +184,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-04] docs: docker setup clarification
 [2026-04-04] simplified conditional
 [2026-04-04] service discovery update
+[2026-04-04] docs: clearer setup instructions
