@@ -187,3 +187,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-04] docs: clearer setup instructions
 [2026-04-05] fix: encoding issue in response
 [2026-04-05] namespace filter fix
+[2026-04-05] readme improvements
