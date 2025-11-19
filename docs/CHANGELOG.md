@@ -190,3 +190,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-05] readme improvements
 [2026-04-05] better variable names
 [2026-04-06] health check fix
+[2026-04-06] sync with main
