@@ -193,3 +193,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-06] sync with main
 [2026-04-07] retry logic improved
 [2026-04-07] graceful degradation
+[2026-04-07] cache invalidation fix
