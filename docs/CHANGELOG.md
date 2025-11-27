@@ -198,3 +198,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-07] stricter validation
 [2026-04-07] fix: typo in error message
 [2026-04-07] fixed race condition in handler
+[2026-04-08] docs: fix typo in readme
