@@ -201,3 +201,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-08] docs: fix typo in readme
 [2026-04-08] fixed wrong import path
 [2026-04-08] request validation
+[2026-04-08] improved api documentation
