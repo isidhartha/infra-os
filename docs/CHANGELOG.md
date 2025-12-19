@@ -212,3 +212,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-12] fix: wrong status code
 [2026-04-12] fix: broken unit test
 [2026-04-12] addressed feedback
+[2026-04-12] fixed error propagation
