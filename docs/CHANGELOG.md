@@ -214,3 +214,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-12] addressed feedback
 [2026-04-12] fixed error propagation
 [2026-04-12] batch processing improvement
+[2026-04-12] chore: rename for clarity
