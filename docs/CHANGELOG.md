@@ -219,3 +219,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-15] pagination cursor fix
 [2026-04-15] code cleanup
 [2026-04-15] node status display
+[2026-04-16] cache ttl adjustment
