@@ -222,3 +222,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-16] cache ttl adjustment
 [2026-04-16] docs: note about environment variables
 [2026-04-17] minor tweaks
+[2026-04-17] fixed outdated instructions
