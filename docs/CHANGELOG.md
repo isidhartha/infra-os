@@ -227,3 +227,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-17] early return pattern
 [2026-04-17] test cleanup
 [2026-04-17] remediation action logging
+[2026-04-17] clearer docs
