@@ -232,3 +232,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-18] cleaned up util functions
 [2026-04-18] all tests green
 [2026-04-18] code review fixes
+[2026-04-18] test: improve mock setup
