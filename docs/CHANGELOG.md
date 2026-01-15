@@ -234,3 +234,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-18] code review fixes
 [2026-04-18] test: improve mock setup
 [2026-04-18] version bump
+[2026-04-19] chore: update dependencies
