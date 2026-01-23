@@ -241,3 +241,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-19] refactor: cleaner variable names
 [2026-04-19] formatting cleanup
 [2026-04-19] better concurrency
+[2026-04-20] reduced unnecessary work
