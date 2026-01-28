@@ -243,3 +243,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-19] better concurrency
 [2026-04-20] reduced unnecessary work
 [2026-04-20] self review fixes
+[2026-04-20] optimized hot path
