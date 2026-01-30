@@ -246,3 +246,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-20] optimized hot path
 [2026-04-22] cluster overview caching
 [2026-04-22] cleanup and formatting
+[2026-04-24] better memory usage
