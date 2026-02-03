@@ -250,3 +250,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-24] got it working
 [2026-04-24] tests passing now
 [2026-04-24] docker build fix
+[2026-04-28] filter improvement
