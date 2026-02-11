@@ -255,3 +255,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-28] fix: off by one
 [2026-04-28] whitespace fix
 [2026-04-28] guard clause cleanup
+[2026-04-28] docs: add missing param docs
