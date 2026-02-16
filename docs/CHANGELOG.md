@@ -258,3 +258,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-28] docs: add missing param docs
 [2026-04-29] fixed the broken test
 [2026-04-29] style: formatting
+[2026-04-30] graceful shutdown
