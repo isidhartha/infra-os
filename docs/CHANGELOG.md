@@ -261,3 +261,4 @@ Running log of changes. Most recent at the bottom.
 [2026-04-30] graceful shutdown
 [2026-04-30] reverted bad change
 [2026-04-30] trying a different approach
+[2026-04-30] it works now
