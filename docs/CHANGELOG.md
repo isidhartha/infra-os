@@ -266,3 +266,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-01] squash commits
 [2026-05-01] grafana dashboard integration
 [2026-05-01] updated env example file
+[2026-05-01] cluster event timeline
