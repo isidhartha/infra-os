@@ -272,3 +272,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-02] pod restart alert threshold
 [2026-05-02] null safety improvement
 [2026-05-02] fix: null check was missing
+[2026-05-02] rough draft
