@@ -273,3 +273,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-02] null safety improvement
 [2026-05-02] fix: null check was missing
 [2026-05-02] rough draft
+[2026-05-04] regression test added
