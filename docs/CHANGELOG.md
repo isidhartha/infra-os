@@ -275,3 +275,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-02] rough draft
 [2026-05-04] regression test added
 [2026-05-04] final touches
+[2026-05-04] style: consistent indentation
