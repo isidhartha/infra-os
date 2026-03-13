@@ -277,3 +277,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-04] final touches
 [2026-05-04] style: consistent indentation
 [2026-05-04] better type handling
+[2026-05-06] dependency cleanup
