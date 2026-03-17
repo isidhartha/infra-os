@@ -279,3 +279,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-04] better type handling
 [2026-05-06] dependency cleanup
 [2026-05-06] query optimization
+[2026-05-07] minor cleanup
