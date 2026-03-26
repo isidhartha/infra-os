@@ -284,3 +284,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-07] test fixtures update
 [2026-05-07] fixed pagination edge case
 [2026-05-07] async fix
+[2026-05-08] fixed failing test
