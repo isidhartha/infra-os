@@ -286,3 +286,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-07] async fix
 [2026-05-08] fixed failing test
 [2026-05-08] tweaks
+[2026-05-08] added code examples to docs
