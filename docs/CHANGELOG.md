@@ -290,3 +290,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-08] refactor: split into smaller functions
 [2026-05-09] signal handling
 [2026-05-09] improve readability
+[2026-05-09] kubectl command timeout
