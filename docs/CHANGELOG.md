@@ -293,3 +293,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-09] kubectl command timeout
 [2026-05-09] removed magic numbers
 [2026-05-09] ingress monitoring
+[2026-05-10] fix: response shape mismatch
