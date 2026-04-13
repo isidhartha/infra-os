@@ -295,3 +295,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-09] ingress monitoring
 [2026-05-10] fix: response shape mismatch
 [2026-05-10] more test coverage
+[2026-05-10] fix: environment variable parsing
