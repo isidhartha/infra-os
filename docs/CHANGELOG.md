@@ -299,3 +299,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-10] chore: cleanup old scripts
 [2026-05-10] docs: installation steps update
 [2026-05-10] hotfix: bad default config
+[2026-05-11] pod log streaming
