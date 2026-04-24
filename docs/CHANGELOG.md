@@ -303,3 +303,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-11] fix: connection not closing properly
 [2026-05-11] added integration test
 [2026-05-11] style: quote consistency
+[2026-05-11] consistent naming
