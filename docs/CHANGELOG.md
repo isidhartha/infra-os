@@ -304,3 +304,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-11] added integration test
 [2026-05-11] style: quote consistency
 [2026-05-11] consistent naming
+[2026-05-11] improved test reliability
