@@ -307,3 +307,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-11] improved test reliability
 [2026-05-11] nl query parsing improvement
 [2026-05-12] fixed response format issue
+[2026-05-12] improved test assertions
