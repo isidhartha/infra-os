@@ -309,3 +309,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-12] fixed response format issue
 [2026-05-12] improved test assertions
 [2026-05-12] better separation of concerns
+[2026-05-12] prometheus query optimization
