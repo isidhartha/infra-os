@@ -312,3 +312,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-12] prometheus query optimization
 [2026-05-12] removed dead code
 [2026-05-13] reorganized files
+[2026-05-13] finishing up
