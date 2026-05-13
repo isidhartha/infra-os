@@ -315,3 +315,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-13] finishing up
 [2026-05-13] alert deduplication
 [2026-05-13] removed old commented code
+[2026-05-13] metrics websocket reconnect
