@@ -318,3 +318,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-13] metrics websocket reconnect
 [2026-05-15] minor refactor
 [2026-05-15] test: better assertions
+[2026-05-17] timeout tuning
