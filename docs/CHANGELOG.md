@@ -321,3 +321,4 @@ Running log of changes. Most recent at the bottom.
 [2026-05-17] timeout tuning
 [2026-05-17] fixed edge case in prod
 [2026-05-17] reduce nesting
+[2026-05-19] node resource calculation
