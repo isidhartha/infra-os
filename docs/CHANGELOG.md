@@ -234,92 +234,92 @@ Running log of changes. Most recent at the bottom.
 [2026-04-18] code review fixes
 [2026-04-18] test: improve mock setup
 [2026-04-18] version bump
-[2026-04-19] chore: update dependencies
-[2026-04-19] chore: bump package versions
-[2026-04-19] root cause analysis prompt
-[2026-04-19] fixed broken link in readme
-[2026-04-19] refactor: cleaner variable names
-[2026-04-19] formatting cleanup
-[2026-04-19] better concurrency
-[2026-04-20] reduced unnecessary work
-[2026-04-20] self review fixes
-[2026-04-20] optimized hot path
-[2026-04-22] cluster overview caching
-[2026-04-22] cleanup and formatting
-[2026-04-24] better memory usage
-[2026-04-24] got it working
-[2026-04-24] tests passing now
-[2026-04-24] docker build fix
-[2026-04-28] filter improvement
-[2026-04-28] added some tests
-[2026-04-28] fix: off by one
-[2026-04-28] whitespace fix
-[2026-04-28] guard clause cleanup
-[2026-04-28] docs: add missing param docs
-[2026-04-29] fixed the broken test
-[2026-04-29] style: formatting
-[2026-04-30] graceful shutdown
-[2026-04-30] reverted bad change
-[2026-04-30] trying a different approach
-[2026-04-30] it works now
-[2026-04-30] fix: race condition in handler
-[2026-05-01] squash commits
-[2026-05-01] grafana dashboard integration
-[2026-05-01] updated env example file
-[2026-05-01] cluster event timeline
-[2026-05-01] progress
-[2026-05-02] fix: edge case with empty input
-[2026-05-02] pod restart alert threshold
-[2026-05-02] null safety improvement
-[2026-05-02] fix: null check was missing
-[2026-05-02] rough draft
-[2026-05-04] regression test added
-[2026-05-04] final touches
-[2026-05-04] style: consistent indentation
-[2026-05-04] better type handling
-[2026-05-06] dependency cleanup
-[2026-05-06] query optimization
-[2026-05-07] minor cleanup
-[2026-05-07] bump version
-[2026-05-07] test fixtures update
-[2026-05-07] fixed pagination edge case
-[2026-05-07] async fix
-[2026-05-08] fixed failing test
-[2026-05-08] tweaks
-[2026-05-08] added code examples to docs
-[2026-05-08] refactor: split into smaller functions
-[2026-05-09] signal handling
-[2026-05-09] improve readability
-[2026-05-09] kubectl command timeout
-[2026-05-09] removed magic numbers
-[2026-05-09] ingress monitoring
-[2026-05-10] fix: response shape mismatch
-[2026-05-10] more test coverage
-[2026-05-10] fix: environment variable parsing
-[2026-05-10] chore: cleanup old scripts
-[2026-05-10] docs: installation steps update
-[2026-05-10] hotfix: bad default config
-[2026-05-11] pod log streaming
-[2026-05-11] fix: connection not closing properly
-[2026-05-11] added integration test
-[2026-05-11] style: quote consistency
-[2026-05-11] consistent naming
-[2026-05-11] improved test reliability
-[2026-05-11] nl query parsing improvement
-[2026-05-12] fixed response format issue
-[2026-05-12] improved test assertions
-[2026-05-12] better separation of concerns
-[2026-05-12] prometheus query optimization
-[2026-05-12] removed dead code
-[2026-05-13] reorganized files
-[2026-05-13] finishing up
-[2026-05-13] alert deduplication
-[2026-05-13] removed old commented code
-[2026-05-13] metrics websocket reconnect
-[2026-05-15] minor refactor
-[2026-05-15] test: better assertions
-[2026-05-17] timeout tuning
-[2026-05-17] fixed edge case in prod
-[2026-05-17] reduce nesting
-[2026-05-19] node resource calculation
-[2026-05-19] fix: log level override not working
+[2026-04-19] bump minor deps
+[2026-04-19] dep version bumps
+[2026-04-19] maintenance
+[2026-04-19] cleanup round 2
+[2026-04-19] better variable names
+[2026-04-19] code style pass
+[2026-04-19] parallelize operations
+[2026-04-20] follow-up
+[2026-04-20] forgot this
+[2026-04-20] missed this
+[2026-04-22] small win
+[2026-04-22] tidy after review
+[2026-04-24] memory optimization
+[2026-04-24] that finally worked
+[2026-04-24] all checks passing
+[2026-04-24] fix docker build
+[2026-04-28] better filter logic
+[2026-04-28] a few more tests
+[2026-04-28] fix: index arithmetic
+[2026-04-28] tweak
+[2026-04-28] clean up guards
+[2026-04-28] fill in missing param docs
+[2026-04-29] tweak
+[2026-04-29] apply formatter
+[2026-04-30] clean shutdown
+[2026-04-30] undo bad change
+[2026-04-30] new approach
+[2026-04-30] that did it
+[2026-04-30] fix: concurrent access
+[2026-05-01] combine prior commits
+[2026-05-01] cleanup round 2
+[2026-05-01] cleanup
+[2026-05-01] misc
+[2026-05-01] inching forward
+[2026-05-02] fix: empty input edge case
+[2026-05-02] small improvement
+[2026-05-02] tidy
+[2026-05-02] fix: null dereference
+[2026-05-02] scaffolding only
+[2026-05-04] another fix
+[2026-05-04] finishing details
+[2026-05-04] normalize indentation
+[2026-05-04] type checking
+[2026-05-06] clean up deps
+[2026-05-06] query performance
+[2026-05-07] small tidy
+[2026-05-07] bump patch version
+[2026-05-07] tidy
+[2026-05-07] follow-up
+[2026-05-07] async bug
+[2026-05-08] minor update
+[2026-05-08] misc
+[2026-05-08] code examples in docs
+[2026-05-08] decompose large function
+[2026-05-09] minor fix
+[2026-05-09] polish
+[2026-05-09] tweak
+[2026-05-09] use named constants
+[2026-05-09] forgot this
+[2026-05-10] fix: response schema
+[2026-05-10] misc tweaks
+[2026-05-10] fix: env parsing
+[2026-05-10] clean up old tooling
+[2026-05-10] installation guide update
+[2026-05-10] one more thing
+[2026-05-11] tidy
+[2026-05-11] fix: close connection
+[2026-05-11] add integration coverage
+[2026-05-11] quote style fix
+[2026-05-11] uniform naming
+[2026-05-11] cleanup round 2
+[2026-05-11] quick pass
+[2026-05-12] another fix
+[2026-05-12] missed this
+[2026-05-12] separate responsibilities
+[2026-05-12] misc
+[2026-05-12] remove dead code
+[2026-05-13] file reorganization
+[2026-05-13] last bits
+[2026-05-13] follow-up
+[2026-05-13] remove dead code
+[2026-05-13] small improvement
+[2026-05-15] small rework
+[2026-05-15] improve test checks
+[2026-05-17] tweak
+[2026-05-17] minor fix
+[2026-05-17] reduce code depth
+[2026-05-19] tidy
+[2026-05-19] fix: logging config
