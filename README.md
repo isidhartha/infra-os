@@ -88,8 +88,6 @@ Set `K8S_MOCK_MODE=false` in `.env` and mount your kubeconfig:
 
 ```yaml
 # In docker-compose.yml, under the backend service:
-
-[![Discussions](https://img.shields.io/github/discussions/isidhartha/infra-os)](https://github.com/isidhartha/infra-os/discussions)
 volumes:
   - ~/.kube:/root/.kube:ro
 ```
