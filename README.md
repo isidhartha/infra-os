@@ -4,12 +4,12 @@
 
 ## Demo
 
-![Demo](docs/images/demo.gif)
+![Demo Animation](docs/images/demo.gif)
 
 ### Screenshots
 
-| Desktop | Feature View | Mobile |
-|---------|-------------|--------|
+| Desktop Dashboard | Feature View | Mobile View |
+|------------------|--------------|--------------|
 | ![Desktop](docs/images/screenshot_desktop.png) | ![Feature](docs/images/screenshot_feature.png) | ![Mobile](docs/images/screenshot_mobile.png) |
 
 
@@ -119,7 +119,7 @@ WS   /ws/metrics                 — Real-time metrics stream
 ## Configuration
 
 | Variable | Description | Default |
-|---|---|---|
+|------------------|--------------|--------------|
 | `OPENAI_API_KEY` | For AI analysis and NL queries | — |
 | `K8S_MOCK_MODE` | Run with fake cluster data | `true` |
 | `PROMETHEUS_URL` | Prometheus endpoint | `http://prometheus:9090` |
