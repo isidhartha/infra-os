@@ -25,13 +25,13 @@ class Settings(BaseSettings):
     k8s_in_cluster: bool = False
 
     # Observability
-    prometheus_url: str = "http://prometheus:9090"
-    grafana_url: str = "http://grafana:3001"
+    prometheus_url: str = "http://localhost:9090"
+    grafana_url: str = "http://localhost:3001"
     grafana_api_key: str = ""
 
     # Storage
-    database_url: str = "postgresql://infraos:password@postgres:5432/infraos"
-    redis_url: str = "redis://redis:6379"
+    database_url: str = "postgresql://infraos:password@localhost:5432/infraos"
+    redis_url: str = "redis://localhost:6379"
 
     # Notifications
     slack_webhook_url: str = ""
@@ -40,7 +40,7 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
     app_name: str = "InfraOS AI"
     version: str = "1.0.0"
-    cors_origins: list[str] = ["http://localhost:3000", "http://localhost:5173"]
+    cors_origins: list[str] = ["http://localhost:3005", "http://localhost:5173"]
 
     # Alerting thresholds
     cpu_warning_threshold: float = 70.0

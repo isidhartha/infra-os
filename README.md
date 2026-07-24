@@ -39,46 +39,68 @@ It's a DevOps operations platform that connects to your Kubernetes cluster, pull
 
 ## How to run it
 
-**Prerequisites**: Docker and Docker Compose. An OpenAI API key for the AI features.
+### Prerequisites
+- Python 3.10+
+- Node.js 18+
+- Git
+- Redis (`redis-server`)
+- PostgreSQL 13+ with database `infraos` created
+- Ollama (optional, for running without any API key — https://ollama.com)
+- Prometheus (optional) — https://prometheus.io/download/
+- Grafana (optional) — https://grafana.com/grafana/download
 
-**1. Clone the repo**
+### Setup
 
 ```bash
-git clone https://github.com/isidhartha/infra-os.git
+# 1. Clone and enter the project
+git clone https://github.com/isidhartha/infra-os
 cd infra-os
-```
 
-**2. Configure**
+# 2. Create virtual environment
+# Windows:
+python -m venv venv
+venv\Scripts\activate
+# Mac/Linux:
+python3 -m venv venv
+source venv/bin/activate
 
-```bash
+# 3. Install Python dependencies
+pip install -r backend/requirements.txt
+
+# 4. Configure environment
+# Windows:
+copy .env.example .env
+# Mac/Linux:
 cp .env.example .env
+# Open .env and fill in at least one AI provider key
+# OR set AI_PROVIDER=ollama to run without any API key
+# K8S_MOCK_MODE=true is set by default (no real cluster needed)
+
+# 5. Start services
+# Redis (in a terminal):
+redis-server
+# PostgreSQL must be running — create the database once:
+# psql -U postgres -c "CREATE DATABASE infraos;"
+
+# 6. Run the backend
+cd backend
+uvicorn main:app --reload --port 8005
+
+# 7. Run the frontend (in a new terminal, from project root)
+cd frontend
+npm install
+npm run dev -- --port 3005
 ```
 
-Edit `.env`. The important ones:
-
-```
-OPENAI_API_KEY=sk-your-key-here
-K8S_MOCK_MODE=true          # set to false if you have a real cluster
-```
-
-If you have a real cluster, you'll also need to set `K8S_CONFIG_PATH` to your kubeconfig file path.
-
-**3. Start everything**
-
-```bash
-docker-compose up --build
-```
-
-This starts the backend, Prometheus, Grafana, and the frontend. First build takes a few minutes.
-
-**4. Open the dashboards**
+**Dashboard**: http://localhost:3005  
+**API docs**: http://localhost:8005/docs
 
 | Service | URL |
 |---|---|
-| InfraOS Dashboard | http://localhost:3000 |
-| Grafana | http://localhost:3001 |
-| Prometheus | http://localhost:9090 |
-| API | http://localhost:8000 |
+| InfraOS Dashboard | http://localhost:3005 |
+| API | http://localhost:8005 |
+| Prometheus (if running) | http://localhost:9090 |
+| Grafana (if running) | http://localhost:3001 |
 
 ---
 
